@@ -41,6 +41,13 @@ attribute :scm_provider, :kind_of => [Class, String, Symbol]
 attribute :revision, :kind_of => String
 attribute :repository, :kind_of => String
 attribute :enable_submodules, :kind_of => [TrueClass, FalseClass], :default => false
+
+# svn deploy resource attributes
+attribute :svn_username, :kind_of => [String, NilClass], :default => nil
+attribute :svn_password, :kind_of => [String, NilClass], :default => nil
+attribute :svn_arguments, :kind_of => [String, NilClass], :default => nil
+attribute :svn_info_args, :kind_of => [String, NilClass], :default => nil
+
 attribute :environment, :kind_of => Hash, :default => {}
 attribute :deploy_key, :kind_of => [String, NilClass], :default => nil
 attribute :strict_ssh, :kind_of => [TrueClass, FalseClass], :default => false

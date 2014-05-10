@@ -87,13 +87,13 @@ def before_deploy
   end
 
   if new_resource.deploy_key
-    
+
     if ::File.exists?(new_resource.deploy_key)
       deploy_key = open(new_resource.deploy_key, &:read)
     else
       deploy_key = new_resource.deploy_key
     end
-    
+
     file "#{new_resource.path}/id_deploy" do
       content deploy_key
       owner new_resource.owner
@@ -132,6 +132,10 @@ def run_deploy(force = false)
     scm_provider new_resource.scm_provider
     revision new_resource.revision
     repository new_resource.repository
+    svn_username new_resource.svn_username if new_resource.svn_username
+    svn_arguments new_resource.svn_arguments if new_resource.svn_arguments
+    svn_password new_resource.svn_password if new_resource.svn_password
+    svn_info_args new_resource.svn_info_args if new_resource.svn_info_args
     enable_submodules new_resource.enable_submodules
     user new_resource.owner
     group new_resource.group
